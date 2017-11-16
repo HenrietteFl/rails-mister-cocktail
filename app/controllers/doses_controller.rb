@@ -17,6 +17,18 @@ class DosesController < ApplicationController
     end
   end
 
+  def destroy
+    @dose = Dose.find(params[:id])
+    @dose.delete
+
+    if @dose.save
+      redirect_to @dose.cocktails
+    else
+      render :new
+    end
+
+  end
+
   private
 
   def dose_params
