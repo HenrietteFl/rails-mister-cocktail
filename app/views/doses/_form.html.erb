@@ -1,0 +1,12 @@
+<div class = "container" style="text-align: center;">
+  <%= simple_form_for [@cocktail, @dose] do |f| %>
+    <%= f.input :ingredient_id, collection: Ingredient.all %>
+    <%= f.input :description %>
+    <%= f.input :amount %>
+    <%= f.submit "add a dose", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+
+
+
