@@ -1,22 +1,20 @@
-<div class = "container" style="text-align: center;">
-  <h1>Name: <%= @cocktail.name %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h1><%= @cocktail.name %></h1>
+    <ul>
+      <% @cocktail.doses.each do |dose| %>
+      <li><%= dose.description %> <%= dose.amount %><%= dose.ingredient.name %> <%= link_to 'Delete Doses', dose_path(dose), method: :delete %></li>
+      <% end %>
+    </ul>
+      <%= link_to 'Add a dose', edit_cocktail_path(@cocktail) %>
+      <br>
+      <%= link_to 'Back', cocktails_path %>
+      <br>
+      <%= link_to 'Delete Cocktail', cocktail_path(@cocktail), method: :delete %>
 
-  <div class="d-inline-block bg-warning"
-  <% @cocktail.doses.each do |dose| %>
-    <p> <%= dose.description %> </p>
-    <p> <%= dose.amount %> </p>
-    <p> <%= dose.ingredient.name %> </p>
-    <p><%= link_to "Delete", dose_path(dose),
-      method: :delete,
-      data: { confirm: "Are you sure?" },
-      class: 'btn btn-alarm' %></p>
-  <% end %>
+    </div>
+
   </div>
-
-  <h3>Add a new ingredient</h3>
-  <%= render "doses/form" %>
-  <%= link_to "Back", cocktails_path, class: 'btn btn-primary' %>
-
 </div>
-
 
