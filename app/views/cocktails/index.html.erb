@@ -1,28 +1,28 @@
-
-<h1 class="text-center">Your cocktail list</h1>
-
-<div class="text-center padded">
+<%= content_for :banner_options do %>
+  <h1 class="text-center">Your cocktail list</h1>
   <%= link_to "Create a cocktail", new_cocktail_path, class: "btn btn-primary" %>
-</div>
+<% end %>
 
-<div class="container">
+<%= render "shared/banner" %>
+
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+
   <div class="row">
     <% @cocktails.each do |cocktail| %>
       <div class="col-xs-12 col-sm-4">
-        <div class="card text-center">
 
-          <% if cocktail.picture %>
-            <div class="card-header" style="background-image: url('<%= image_path cocktail.picture%>')">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path cocktail.photo.path, height: 300, width: 400, crop: :fill %>')">
+
+          <div class="card-description">
+            <div class="card-body">
+              <%= link_to cocktail.name, cocktail_path(cocktail) %>
             </div>
-          <% else %>
-            <div class="card-header" style="background-image: url('http://www.seriouseats.com/images/2014/11/20141104-cocktail-party-old-fashioneds-holiday-vicky-wasik-3.jpg')">
-            </div>
-          <% end %>
-          <div class="card-body">
-            <%= link_to cocktail.name, cocktail_path(cocktail) %>
           </div>
+
         </div>
       </div>
     <% end %>
   </div>
 </div>
+

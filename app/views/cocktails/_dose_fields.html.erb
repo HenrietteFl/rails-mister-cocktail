@@ -1,5 +1,6 @@
 <div class="nested-fields">
   <%= f.input :description, placeholder: "Please type your description" %>
   <%= f.input :ingredient_id, collection: Ingredient.all %>
-  <%= link_to_remove_association "remove dose", f %>
+  </br>
+  <%= link_to_remove_association "remove dose", f, class: "btn btn-primary"%>
 </div>
